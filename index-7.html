@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BHUNEXA | Your Property. Your Future.</title>
+
+<link rel="manifest" href="/bhunexa/manifest.json">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+font-family:Arial;
+background:#F8FCFF;
+color:#263238;
+padding-bottom:65px
+}
+:root{
+--b:#1769AA;
+--s:#EAF6FF;
+--g:#2E8B57;
+--p:#C2185B;
+--gold:#E3B341
+}
+
+#intro{
+position:fixed;
+inset:0;
+z-index:9999;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+background:radial-gradient(circle,#1769AA,#0C4269,#020B14);
+animation:hide 1s 3s forwards
+}
+.logo{
+font-size:45px;
+font-weight:bold;
+color:white;
+letter-spacing:6px
+}
+.logo span{color:var(--gold)}
+.tag{
+color:white;
+letter-spacing:3px;
+margin-top:12px
+}
+@keyframes hide{
+to{
+opacity:0;
+visibility:hidden
+}
+}
+
+.navbar{
+position:sticky;
+top:0;
+z-index:1000;
+background:white;
+padding:14px 6%;
+display:flex;
+justify-content:space-between;
+box-shadow:0 2px 12px #0001
+}
+.brand{
+font-size:25px;
+font-weight:bold;
+color:var(--b)
+}
+.brand span{color:var(--g)}
+.nav-links{
+display:flex;
+gap:18px
+}
+.nav-links a{
+color:#263238;
+text-decoration:none;
+font-weight:bold
+}
+
+section{
+max-width:1100px;
+margin:auto;
+padding:50px 6%
+}
+
+.hero{
+text-align:center;
+background:linear-gradient(135deg,#EAF6FF,#fff)
+}
+.hero small{
+color:var(--g);
+font-weight:bold
+}
+h1{
+font-size:40px;
+color:var(--b);
+margin:15px 0
+}
+h2{
+color:var(--b);
+margin-bottom:10px
+}
+.sub{
+text-align:center;
+color:#607D8B;
+margin-bottom:20px
+}
+.hero p{
+max-width:720px;
+margin:12px auto;
+line-height:1.6
+}
+
+.btn{
+display:inline-block;
+padding:11px 17px;
+border:0;
+border-radius:10px;
+text-decoration:none;
+font-weight:bold;
+cursor:pointer;
+margin:4px
+}
+.primary{
+background:var(--b);
+color:white
+}
+.secondary{
+background:var(--g);
+color:white
+}
+
+.card,.form-card,.contact-card,.search{
+background:white;
+padding:20px;
+border-radius:17px;
+box-shadow:0 5px 20px #1769AA18;
+margin-top:20px
+}
+
+.search{
+display:grid;
+grid-template-columns:1fr 1fr 1fr auto;
+gap:8px
+}
+
+input,select,textarea{
+width:100%;
+padding:12px;
+border:1px solid #E1EEF5;
+border-radius:9px;
+margin:5px 0
+}
+textarea{height:90px}
+
+.cats,.grid,.contact-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+margin-top:20px
+}
+
+.cat{
+text-align:center;
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 4px 15px #0001;
+cursor:pointer
+}
+.cat b{
+display:block;
+color:var(--b);
+margin-top:7px
+}
+
+.property-img{
+height:145px;
+background:var(--s);
+border-radius:12px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:50px;
+overflow:hidden
+}
+.property-img img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+.card h3{
+color:var(--b);
+margin:12px 0
+}
+.meta{
+color:#607D8B;
+line-height:1.7;
+font-size:14px
+}
+.price{
+color:var(--p);
+font-weight:bold;
+margin:8px 0
+}
+
+.contact-card{text-align:center}
+.contact-card b{
+display:block;
+color:var(--b);
+margin:8px
+}
+
+.success{
+background:#E8F5E9;
+color:var(--g);
+padding:10px;
+border-radius:8px;
+margin-top:10px
+}
+.error{
+background:#FFEBEE;
+color:var(--p);
+padding:10px;
+border-radius:8px;
+margin-top:10px
+}
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+z-index:2000;
+background:white;
+display:flex;
+justify-content:space-around;
+padding:7px 2px;
+box-shadow:0 -2px 15px #0002
+}
+.bottom-nav a{
+text-decoration:none;
+color:#607D8B;
+font-size:11px;
+text-align:center
+}
+.nav-icon{
+display:block;
+font-size:20px
+}
+
+footer{
+text-align:center;
+background:#263238;
+color:white;
+padding:28px
+}
+footer h2{color:white}
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:#0008;
+z-index:3000;
+padding:20px
+}
+.modal-box{
+background:white;
+max-width:500px;
+margin:50px auto;
+padding:25px;
+border-radius:18px
+}
+.close{
+float:right;
+font-size:25px;
+color:var(--p);
+cursor:pointer
+}
+
+@media(max-width:700px){
+.nav-links{display:none}
+h1{font-size:30px}
+.search{grid-template-columns:1fr}
+section{padding:40px 5%}
+}
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+<div class="logo">BHU<span>NEXA</span></div>
+<div class="tag">PROPERTY • TRUST • FUTURE</div>
+</div>
+
+<nav class="navbar">
+<div class="brand">BHU<span>NEXA</span></div>
+
+<div class="nav-links">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#enquiry">Enquiry</a>
+<a href="#properties">Properties</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section id="home" class="hero">
+
+<small>📍 Serving Pune, Maharashtra</small>
+
+<h1>Find Your Perfect Property</h1>
+
+<p>
+<b>Buy, Rent & Discover Properties with BHUNEXA</b>
+</p>
+
+<p>
+तुमच्या गरजेनुसार, आवश्यकतेनुसार योग्य Property शोधा.
+</p>
+
+<p>
+❤️ तुमची पसंती • तुमचं स्वप्न • आमची जबाबदारी ❤️
+</p>
+
+<a href="#properties" class="btn primary">
+🏠 Explore Properties
+</a>
+
+<a href="#enquiry" class="btn secondary">
+💬 Make an Enquiry
+</a>
+
+</section>
+
+<section>
+
+<h2>Search Property</h2>
+
+<div class="search">
+
+<input
+id="location"
+placeholder="📍 Location"
+>
+
+<select id="purpose">
+<option value="">Purpose</option>
+<option>Buy</option>
+<option>Rent</option>
+</select>
+
+<select id="type">
+<option value="">Property Type</option>
+<option>Land</option>
+<option>Residential Plot</option>
+<option>House</option>
+<option>Flat</option>
+<option>Commercial</option>
+</select>
+
+<button
+class="btn primary"
+onclick="searchProperties()"
+>
+🔎 Search
+</button>
+
+</div>
+</section>
+
+<section>
+
+<h2>Property Categories</h2>
+
+<div class="cats">
+
+<div
+class="cat"
+onclick="filterCategory('Residential Plot')"
+>
+🏠
+<b>Residential Plots</b>
+</div>
+
+<div
+class="cat"
+onclick="filterCategory('Land')"
+>
+🌾
+<b>Land</b>
+</div>
+
+<div
+class="cat"
+onclick="filterCategory('House')"
+>
+🏡
+<b>House</b>
+</div>
+
+<div
+class="cat"
+onclick="filterCategory('Flat')"
+>
+🏢
+<b>Flats</b>
+</div>
+
+<div
+class="cat"
+onclick="filterCategory('Commercial')"
+>
+🏬
+<b>Commercial</b>
+</div>
+
+</div>
+</section>
+
+<section id="properties">
+
+<h2>Our Properties</h2>
+
+<p class="sub">
+तुमच्या गरजेनुसार, आवश्यकतेनुसार योग्य प्रॉपर्टीचं आकर्षक कलेक्शन
+</p>
+
+<div id="propertyGrid" class="grid">
+
+<div class="card">
+Loading Properties...
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<h2>About BHUNEXA</h2>
+
+<p class="sub">
+Your Property. Your Future.
+</p>
+
+<div class="card">
+
+<h3>🏡 BHUNEXA बद्दल</h3>
+<br>
+
+<p>
+BHUNEXA हे एक आधुनिक आणि customer-friendly Real Estate Platform आहे,
+जिथे तुम्हाला तुमच्या गरजेनुसार योग्य Property शोधणे सोपे आणि convenient होते.
+</p>
+
+<br>
+
+<p>
+🏠 Residential Plots &nbsp; • &nbsp;
+🌾 Land &nbsp; • &nbsp;
+🏡 Houses &nbsp; • &nbsp;
+🏢 Flats &nbsp; • &nbsp;
+🏬 Commercial Properties
+</p>
+
+<br>
+
+<p>
+आमचा उद्देश म्हणजे Property Search ची प्रक्रिया
+<strong>
+Simple, Transparent आणि Trustworthy
+</strong>
+बनवणे.
+</p>
+
+<br>
+
+<p>
+🔹 Trust & Transparency<br>
+🔹 Wide Property Options<br>
+🔹 Easy Enquiry Process<br>
+🔹 Customer First Approach
+</p>
+
+<br>
+
+<p>
+<strong>
+❤️ तुमची पसंती • तुमचं स्वप्न • आमची जबाबदारी ❤️
+</strong>
+</p>
+
+</div>
+</section>
+
+<section id="enquiry">
+
+<h2>Send An Enquiry</h2>
+
+<p class="sub">
+Login ची गरज नाही. थेट Enquiry करा.
+</p>
+
+<div class="form-card">
+
+<form id="enquiryForm">
+
+<input
+id="name"
+placeholder="Full Name *"
+required
+>
+
+<input
+id="mobile"
+placeholder="Mobile Number *"
+type="tel"
+required
+>
+
+<select id="property" required>
+<option value="">
+Select Property *
+</option>
+</select>
+
+<input
+id="ptype"
+placeholder="Property Type"
+readonly
+>
+
+<select id="purposeForm" required>
+
+<option value="">
+Purpose *
+</option>
+
+<option>Buy</option>
+<option>Rent</option>
+
+</select>
+
+<input
+id="preferredLocation"
+placeholder="Preferred Location"
+>
+
+<input
+id="budget"
+placeholder="Budget"
+>
+
+<textarea
+id="message"
+placeholder="Message"
+></textarea>
+
+<button
+class="btn primary"
+type="submit"
+>
+📩 Submit Enquiry
+</button>
+
+<div id="formMsg"></div>
+
+</form>
+
+</div>
+</section>
+
+<section id="contact">
+
+<h2>Contact BHUNEXA</h2>
+
+<p class="sub">
+Property साठी आमच्याशी थेट संपर्क करा.
+</p>
+
+<div class="contact-grid">
+
+<div class="contact-card">
+
+📞
+<b>Call BHUNEXA</b>
+
+<a
+class="btn primary"
+href="tel:+917385342576"
+>
+Call Now
+</a>
+
+</div>
+
+<div class="contact-card">
+
+💬
+<b>WhatsApp</b>
+
+<a
+class="btn secondary"
+href="https://wa.me/917385342576"
+target="_blank"
+>
+Chat Now
+</a>
+
+</div>
+
+<div class="contact-card">
+
+📧
+<b>Email</b>
+
+<a
+class="btn primary"
+href="mailto:smitakonde3500@gmail.com"
+>
+Email Us
+</a>
+
+</div>
+
+<div class="contact-card">
+
+📍
+<b>Location</b>
+
+<span>
+Pune, Maharashtra
+</span>
+
+</div>
+
+</div>
+
+<br>
+
+<center>
+
+<a
+href="#enquiry"
+class="btn secondary"
+>
+📝 Send Enquiry
+</a>
+
+</center>
+
+</section>
+
+<footer>
+
+<h2>BHUNEXA</h2>
+
+<p>
+Your Property. Your Future.
+</p>
+
+<p>
+Find • Trust • Invest • Grow
+</p>
+
+<p>
+© 2026 BHUNEXA. All Rights Reserved.
+</p>
+
+</footer>
+
+<div id="modal" class="modal">
+
+<div class="modal-box">
+
+<span
+class="close"
+onclick="closeModal()"
+>
+×
+</span>
+
+<div id="modalContent"></div>
+
+</div>
+
+</div>
+
+<div class="bottom-nav">
+
+<a href="#home">
+<span class="nav-icon">🏠</span>
+Home
+</a>
+
+<a href="#about">
+<span class="nav-icon">ℹ️</span>
+About
+</a>
+
+<a href="#enquiry">
+<span class="nav-icon">💬</span>
+Enquiry
+</a>
+
+<a href="#properties">
+<span class="nav-icon">🏡</span>
+Properties
+</a>
+
+<a href="#contact">
+<span class="nav-icon">📞</span>
+Contact
+</a>
+
+</div>
+
+
+<!-- FIREBASE -->
+
+<script type="module">
+
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs,
+addDoc,
+serverTimestamp
+}
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+const firebaseConfig={
+
+apiKey:
+"AIzaSyBhA0gzcbi0Dvgo8TgcGndNQf_dIWTUl4",
+
+authDomain:
+"bhunexa.firebaseapp.com",
+
+projectId:
+"bhunexa",
+
+storageBucket:
+"bhunexa.firebasestorage.app",
+
+messagingSenderId:
+"252878970205",
+
+appId:
+"1:252878970205:web:282cc085c0f90418845cb4"
+
+};
+
+
+const app=initializeApp(firebaseConfig);
+
+const db=getFirestore(app);
+
+let properties=[];
+
+
+async function load(){
+
+try{
+
+let s=
+await getDocs(
+collection(db,"properties")
+);
+
+properties=
+s.docs.map(
+d=>({
+id:d.id,
+...d.data()
+})
+);
+
+render(properties);
+
+populate();
+
+}
+catch(e){
+
+document.getElementById(
+"propertyGrid"
+).innerHTML=
+'<div class="error">Properties load झाल्या नाहीत.</div>';
+
+}
+
+}
+
+
+function render(list){
+
+document.getElementById(
+"propertyGrid"
+).innerHTML=
+
+list.length?
+
+list.map(p=>`
+
+<div class="card">
+
+<div class="property-img">
+
+${
+p.image
+?
+`<img src="${p.image}">`
+:
+"🏡"
+}
+
+</div>
+
+<h3>
+${p.title||"Property"}
+</h3>
+
+<div class="meta">
+
+📍 ${p.location||"Pune"}<br>
+
+🏷️ ${p.type||"Property"}<br>
+
+📐 ${p.area||"Details available"}
+
+</div>
+
+<div class="price">
+
+${p.price||"Price on enquiry"}
+
+</div>
+
+<button
+class="btn primary"
+onclick="openProperty('${p.id}')"
+>
+Details
+</button>
+
+<button
+class="btn secondary"
+onclick="startEnquiry('${p.id}')"
+>
+Enquiry
+</button>
+
+</div>
+
+`).join("")
+
+:
+
+'<div class="card">No Properties Found.</div>';
+
+}
+
+
+function populate(){
+
+document.getElementById(
+"property"
+).innerHTML=
+
+'<option value="">Select Property *</option>'+
+
+properties.map(p=>
+
+`<option value="${p.id}">
+${p.title||"Property"}
+</option>`
+
+).join("");
+
+}
+
+
+window.openProperty=id=>{
+
+let p=
+properties.find(
+x=>x.id==id
+);
+
+if(!p)return;
+
+
+document.getElementById(
+"modalContent"
+).innerHTML=
+
+`
+
+<h2>
+${p.title||"Property"}
+</h2>
+
+<br>
+
+<p>
+📍 ${p.location||"Pune"}
+</p>
+
+<p>
+🏷️ ${p.type||"Property"}
+</p>
+
+<p>
+📐 ${p.area||"Available"}
+</p>
+
+<p class="price">
+${p.price||"Price on enquiry"}
+</p>
+
+<br>
+
+<p>
+${p.description||
+"Property details available with BHUNEXA."
+}
+</p>
+
+<br>
+
+<button
+class="btn secondary"
+onclick="startEnquiry('${p.id}')"
+>
+💬 Make Enquiry
+</button>
+
+`;
+
+
+document.getElementById(
+"modal"
+).style.display=
+"block";
+
+};
+
+
+window.closeModal=()=>{
+
+document.getElementById(
+"modal"
+).style.display=
+"none";
+
+};
+
+
+window.startEnquiry=id=>{
+
+document.getElementById(
+"property"
+).value=id;
+
+let p=
+properties.find(
+x=>x.id==id
+);
+
+if(p)
+document.getElementById(
+"ptype"
+).value=
+p.type||"";
+
+closeModal();
+
+location.hash=
+"enquiry";
+
+};
+
+
+window.searchProperties=()=>{
+
+let l=
+document.getElementById(
+"location"
+).value.toLowerCase();
+
+let pu=
+document.getElementById(
+"purpose"
+).value.toLowerCase();
+
+let t=
+document.getElementById(
+"type"
+).value.toLowerCase();
+
+
+render(
+
+properties.filter(p=>
+
+(!l||
+(p.location||"")
+.toLowerCase()
+.includes(l))
+
+&&
+
+(!pu||
+(p.purpose||"")
+.toLowerCase()
+.includes(pu))
+
+&&
+
+(!t||
+(p.type||"")
+.toLowerCase()
+.includes(t))
+
+)
+
+);
+
+};
+
+
+window.filterCategory=t=>{
+
+render(
+
+properties.filter(p=>
+
+(p.type||"")
+.toLowerCase()
+.includes(
+t.toLowerCase()
+)
+
+)
+
+);
+
+location.hash=
+"properties";
+
+};
+
+
+document.getElementById(
+"property"
+).onchange=function(){
+
+let p=
+properties.find(
+x=>x.id==this.value
+);
+
+document.getElementById(
+"ptype"
+).value=
+p?
+p.type||"":
+"";
+
+};
+
+
+document.getElementById(
+"enquiryForm"
+).onsubmit=
+async e=>{
+
+e.preventDefault();
+
+let msg=
+document.getElementById(
+"formMsg"
+);
+
+let p=
+properties.find(
+x=>
+x.id==
+document.getElementById(
+"property"
+).value
+);
+
+
+try{
+
+await addDoc(
+collection(db,"enquiries"),
+{
+
+name:
+document.getElementById(
+"name"
+).value,
+
+mobile:
+document.getElementById(
+"mobile"
+).value,
+
+propertyId:
+document.getElementById(
+"property"
+).value,
+
+propertyTitle:
+p?
+p.title:
+"",
+
+propertyType:
+document.getElementById(
+"ptype"
+).value,
+
+purpose:
+document.getElementById(
+"purposeForm"
+).value,
+
+preferredLocation:
+document.getElementById(
+"preferredLocation"
+).value,
+
+budget:
+document.getElementById(
+"budget"
+).value,
+
+message:
+document.getElementById(
+"message"
+).value,
+
+status:
+"New",
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+
+msg.className=
+"success";
+
+msg.innerText=
+"✅ Enquiry successfully sent!";
+
+e.target.reset();
+
+document.getElementById(
+"ptype"
+).value="";
+
+}
+catch(err){
+
+msg.className=
+"error";
+
+msg.innerText=
+"❌ Enquiry send झाली नाही.";
+
+}
+
+};
+
+
+load();
+
+</script>
+
+
+<!-- SERVICE WORKER -->
+
+<script>
+
+if(
+"serviceWorker" in navigator
+){
+
+window.addEventListener(
+"load",
+()=>{
+
+navigator.serviceWorker
+.register(
+"/bhunexa/service-worker.js"
+)
+.then(
+()=>{
+console.log(
+"BHUNEXA Service Worker registered successfully"
+);
+}
+)
+.catch(
+(error)=>{
+console.log(
+"Service Worker registration failed:",
+error
+);
+}
+);
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
