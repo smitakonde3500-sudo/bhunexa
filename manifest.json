@@ -1,0 +1,13 @@
+{
+  "background_color": "#eaf6ff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "BHUNEXA",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "BHUNEXA",
+  "start_url": "/",
+  "theme_color": "#1769aa",
+  "description": "BHUNEXA - Your Property. Your Future.",
+  "id": "BHUNEXA"
+}
